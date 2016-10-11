@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//Dtd XHTML 1.0 Strict//EN"
+  "http//www.w3.org/TR/xhtml1/Dtd/xhtml1-strict.dtd">
+<html xmlns="http//www.w3.org/1999/xhtml" xmllang="en" lang="en">
+<head><title>Test of table frame attribute</title></head>
+<body>
+<table border="1" rules="all" cellpadding="5">
+  <tr>
+    <td><table border="0" cellpadding="5"><tr>
+      <td><code>border="10"</code><br/>
+        w/o <code>frame</code><br/>
+        w/o <code>rules</code>
+        </td>
+      <td>
+        <table border="10">
+          <tr><td>a1</td><td>a2</td></tr>
+          <tr><td>b1</td><td>b2</td></tr>
+          </table>
+        </td>
+      </tr></table></td>
+    <td><table border="0" cellpadding="5"><tr>
+      <td><code>border="10"</code><br/>
+        <code>frame="box"</code><br/>
+        <code>rules="rows"</code>
+        </td>
+      <td>
+        <table border="10" frame="box" rules="rows">
+          <tr><td>a1</td><td>a2</td></tr>
+          <tr><td>b1</td><td>b2</td></tr>
+          </table>
+        </td>
+      </tr></table></td>
+    </tr>
+  <tr>
+    <td><table border="0" cellpadding="5"><tr>
+      <td><code>border="0"</code><br/>
+        w/o <code>frame</code><br/>
+        <code>rules="all"</code>
+        </td>
+      <td>
+        <table border="0" rules="all">
+          <tr><td>a1</td><td>a2</td></tr>
+          <tr><td>b1</td><td>b2</td></tr>
+          </table>
+        </td>
+      </tr></table></td>
+    <td><table border="0" cellpadding="5"><tr>
+      <td><code>border="10"</code><br/>
+        <code>frame="vsides"</code><br/>
+        <code>rules="cols"</code>
+        </td>
+      <td>
+        <table border="10" frame="vsides" rules="cols">
+          <tr><td>a1</td><td>a2</td></tr>
+          <tr><td>b1</td><td>b2</td></tr>
+          </table>
+        </td>
+      </tr></table></td>
+    </tr>
+  </table>
+</body>
+</html>

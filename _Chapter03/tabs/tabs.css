@@ -1,0 +1,40 @@
+div.tabs {
+  float              : left;
+  width              : 100%;
+  background         : white url(tab_pixel.gif) repeat-x bottom;
+  }
+div.tabs ul {
+  list-style         : none;
+  margin             : 0px;
+  padding            : 0px;
+  }
+div.tabs li {
+  display            : inline;
+  margin             : 0px;
+  padding            : 0px;
+  }
+div.tabs a {
+  float              : left;
+  background         : url(tab_right.gif) no-repeat right top;
+  border-bottom      : 1px solid black;
+  font-size          : small;
+  font-weight        : bold;
+  text-decoration    : none;
+  }
+div.tabs li#on a {
+  border-bottom      : 1px solid white;
+  background-position: 100% 100%;
+  }
+div.tabs a:link, div.tabs a:active, div.tabs a:visited {
+  color              : black;
+  }
+div.tabs a:hover {
+  color              : #808080;
+  background-position: 100% 100%;
+  }
+div.tabs span {
+  float              : left;
+  background         : url(tab_left.gif) no-repeat left top;
+  padding            : 5px;
+  white-space        : nowrap;
+  }

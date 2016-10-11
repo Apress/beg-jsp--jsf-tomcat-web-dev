@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+  <title>Ticker Tape</title>
+  <script type="text/javascript">
+    var msg = " This is a ticker tape message!";
+    var TAPE_SIZE = 300; // in pixels
+    function start_ticker() {
+      document.f.t.style.width = TAPE_SIZE + "px";
+      var xx = document.getElementById("x");
+      var space_size = xx.offsetWidth - 1;
+      xx.innerHTML = msg;
+      var msg_size = xx.offsetWidth;
+      var nSpaces = Math.ceil((TAPE_SIZE - msg_size) / space_size);
+      for (var k = nSpaces; k > 0; k--) msg += " ";
+      document.f.t.value = msg;
+      tick_it();
+      }
+    function tick_it() {
+      msg = msg.substring(1) + msg.charAt(0);
+      document.f.t.value = msg;
+      window.setTimeout("tick_it()", 150);
+      }
+    </script>
+  </head>
+<body>
+  <span id="x" style="visibility:hidden">&nbsp;</span>
+  <form name="f"><input name="t" value=""/></form>
+  <script type="text/javascript">start_ticker();</script>
+  </body>
+</html>

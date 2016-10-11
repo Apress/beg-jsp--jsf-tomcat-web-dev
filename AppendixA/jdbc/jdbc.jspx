@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<jsp:root
+  xmlns:jsp="http://java.sun.com/JSP/Page"
+  xmlns:c="http://java.sun.com/jsp/jstl/core"
+  xmlns:sql="http://java.sun.com/jsp/jstl/sql"
+  version="2.1"
+  >
+<jsp:directive.page
+  language="java"
+  contentType="ISO-8859-1"
+  pageEncoding="ISO-8859-1"
+  />
+<jsp:output
+  doctype-root-element="html"
+  doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+  doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
+  />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>JDBC/JSTL test</title></head><body>
+<sql:setDataSource driver="com.mysql.jdbc.Driver"
+  url="jdbc:mysql://localhost:3306/shop"
+  user="root" password="" var="dataSource"
+  />
+<sql:query var="books" dataSource="${dataSource}">
+  select * from books
+  </sql:query>
+<table border= "1">
+  <tr>
+    <c:forEach var="colName" items="${books.columnNames}">
+      <td><b><c:out value="${colName}"/></b></td>
+      </c:forEach>
+    </tr>
+  <c:forEach var="row" items="${books.rowsByIndex}">
+    <tr>
+      <c:forEach var="col" items="${row}">
+        <td><c:out value="${col}"/></td>
+        </c:forEach>
+      </tr>
+    </c:forEach>
+  </table>
+</body></html>
+</jsp:root>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd"
+    version="2.5">
+  <display-name>Authentication</display-name>
+  <description>
+    Authentication example for
+    Beginning JSP, JSF and Tomcat: from Novice to Professional
+    </description>
+  <security-role>
+    <role-name>canDoThis</role-name>
+    <role-name>canDoThat</role-name>
+    </security-role>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>This</web-resource-name>
+      <url-pattern>/user_authentication/this/*</url-pattern>
+      </web-resource-collection>
+    <auth-constraint>
+      <role-name>canDoThis</role-name>
+      </auth-constraint>
+    </security-constraint>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>That</web-resource-name>
+      <url-pattern>/user_authentication/that/*</url-pattern>
+      <http-method>GET</http-method>
+      </web-resource-collection>
+    <auth-constraint>
+      <role-name>canDoThat</role-name>
+      </auth-constraint>
+    </security-constraint>
+  <login-config>
+    <auth-method>BASIC</auth-method>
+    </login-config>
+</web-app>

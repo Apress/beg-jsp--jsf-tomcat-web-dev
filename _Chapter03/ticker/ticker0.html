@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+  <title>Ticker Tape 0</title>
+  <script type="text/javascript">
+    var msg = " This is a ticker tape message!            ";
+    function tick_it() {
+      msg = msg.substring(1) + msg.charAt(0);
+      document.f.t.value = msg;
+      window.setTimeout("tick_it()", 150);
+      }
+    </script>
+  </head>
+<body>
+  <form name="f"><input name="t" size="30" value=""/></form>
+  <script type="text/javascript">tick_it();</script>
+  </body>
+</html>

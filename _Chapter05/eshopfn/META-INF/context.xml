@@ -1,0 +1,7 @@
+<!-- MySQL database context -->
+<Context debug="5" reloadable="true" crossContext="true">
+  <Resource name="jdbc/mysql" auth="Container"
+    type="javax.sql.DataSource" username="root" password=""
+    driverClassName="com.mysql.jdbc.Driver"
+    url="jdbc:mysql://localhost:3306/shop" maxActive="8" maxIdle="4"/>
+  </Context>

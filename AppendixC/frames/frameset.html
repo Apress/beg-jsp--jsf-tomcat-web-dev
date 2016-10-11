@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
+  "http//www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http//www.w3.org/1999/xhtml" xmllang="en" lang="en">
+<head>
+  <title>Example of frames: Frameset</title>
+  <style type="text/css"> <!--
+    .cell_a {background-color: white;}
+    .cell_b {background-color: #c0c0c0;}
+    .cell_c {background-color: #808080;}
+    .cell_d {background-color: #404040;}
+    --> </style>
+</head>
+<frameset rows="30%, *" cols="*, 60%">
+  <frame src="framea.html"/>
+  <frame src="frameb.html"/>
+  <frame src="framec.html"/>
+  <frame src="framed.html"/>
+  <noframes>
+    <body>
+      <table cellpadding="5" border="1">
+        <tr>
+          <td class="cell_a">this is frame A</td>
+          <td class="cell_b">this is frame B</td>
+          </tr>
+        <tr>
+          <td class="cell_c">this is frame C</td>
+          <td class="cell_d">this is frame D</td>
+          </tr>
+        </table>
+      </body>
+    </noframes>
+</frameset>
+</html>

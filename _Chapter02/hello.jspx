@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<jsp:root
+  xmlns:jsp="http://java.sun.com/JSP/Page"
+  xmlns:c="http://java.sun.com/jsp/jstl/core"
+  xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+  version="2.1"
+  >
+<jsp:directive.page
+  language="java"
+  contentType="ISO-8859-1"
+  pageEncoding="ISO-8859-1"
+  />
+<jsp:output
+  doctype-root-element="html"
+  doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+  doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
+  />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>Hello World in XHTML</title></head>
+<body>
+  <jsp:text>Hello World!</jsp:text>
+  <br/>
+  <jsp:text>Your IP address is ${pageContext.request.remoteAddr}</jsp:text>
+  <br/>
+  <jsp:text>and your browser is </jsp:text>
+  <c:set var="usAg" value="${header['user-agent']}"/>
+  <c:choose>
+    <c:when test="${fn:contains(usAg, 'MSIE')}">
+      <jsp:text>MS InternetExplorer</jsp:text>
+      </c:when>
+    <c:when test="${fn:contains(usAg, 'Firefox')}">
+      <jsp:text>Mozilla Firefox</jsp:text>
+      </c:when>
+    <c:otherwise><jsp:text>unknown</jsp:text></c:otherwise>
+    </c:choose>
+</body>
+</html>
+</jsp:root>

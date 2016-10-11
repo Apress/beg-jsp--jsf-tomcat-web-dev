@@ -1,0 +1,20 @@
+<%@page import="javax.xml.soap.MessageFactory"%>
+<%@page import="javax.xml.soap.SOAPConstants"%>
+<%@page import="javax.xml.soap.SOAPHeader"%>
+<%@page import="javax.xml.soap.SOAPHeaderElement"%>
+<%
+  // It uses the variables mess, env, name, and body
+  {
+    MessageFactory mf =
+        MessageFactory.newInstance(SOAPConstants.SOAP_1_2_PROTOCOL);
+    mess = mf.createMessage();
+    mess.setProperty(SOAPMessage.WRITE_XML_DECLARATION, "true");
+    mess.setProperty(SOAPMessage.CHARACTER_SET_ENCODING, "ISO-8859-1");
+    SOAPHeader head = mess.getSOAPHeader();
+    env = mess.getSOAPPart().getEnvelope();
+    Name headElemName = env.createName("message", "my", "myMess.xsd");
+    SOAPHeaderElement headElem = head.addHeaderElement(headElemName);
+    headElem.setMustUnderstand(true);
+    body = mess.getSOAPBody();
+    }
+  %>

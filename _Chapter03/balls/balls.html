@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+  <title>Bouncing balls</title>
+  <style>
+    #square {
+      position: absolute;
+      border: thin solid;
+      }
+    div.ball img {
+      position: absolute;
+      }
+    </style>
+<script type="text/javascript">
+var MIN_X = 10;
+var MIN_Y = 50;
+var MAX_X = 310;
+var MAX_Y = 350;
+var DIAM = 7;
+var balls = [];
+var timer = null;
+//------------------------------
+function speed() {
+  return DIAM*(0.5+1.5*Math.random())*((Math.random()>0.5)?1:-1);
+  }
+function initBall(ball, xx, yy) {
+  ball.xx = xx;
+  ball.yy = yy;
+  ball.sX = speed();
+  ball.sY = speed();
+  }
+function mouseDown(e) {
+  var xx = e.clientX;
+  var yy = e.clientY;
+  document.f.t.value = xx + ", " + yy;
+  if (xx > MIN_X && xx < MAX_X && yy > MIN_Y && yy < MAX_Y) {
+    document.getElementById("ball").appendChild(balls[0].cloneNode(true));
+    initBall(balls[balls.length-1], xx, yy);
+    }
+  }
+function moveBall(b) {
+  b.xx += b.sX;
+  b.yy += b.sY;
+  b.style.left = b.xx + "px";
+  b.style.top = b.yy + "px";
+  if ((b.xx + b.sX + DIAM >= MAX_X) || (b.xx + b.sX <= MIN_X)) b.sX *= -1;
+  if ((b.yy + b.sY + DIAM >= MAX_Y) || (b.yy + b.sY <= MIN_Y)) b.sY *= -1;
+  }
+function moveBalls() {
+  for (var k = 0; k < balls.length; k++) {
+    moveBall(balls[k]);
+    }
+  }
+function go() {
+  if (!timer) timer = setInterval(moveBalls, 20);
+  var but = document.getElementById("stop_go");
+  but.onclick = stop;
+  but.value = "Stop";
+  }
+function stop() {
+  if (timer) {
+    clearInterval(timer);
+    timer = null;
+    var but = document.getElementById("stop_go");
+    but.onclick = go;
+    but.value = "Go";
+    }
+  }
+function init() {
+  var field = document.getElementById("square");
+  field.style.left = MIN_X + "px";
+  field.style.top = MIN_Y + "px";
+  field.style.width = MAX_X - MIN_X + "px";
+  field.style.height = MAX_Y - MIN_Y + "px";
+  balls = document.getElementById("ball").getElementsByTagName("img");
+  initBall(
+    balls[0],
+    (MAX_X - MIN_X)*Math.random(),
+    (MAX_Y - MIN_Y)*Math.random()
+    );
+  balls[0].style.width = DIAM + "px";
+  balls[0].style.height = DIAM + "px";
+  document.onmousedown = mouseDown;
+  go();
+  }
+window.onload = init;
+</script>
+</head>
+<body>
+  <form name="f">
+    <input type="text" name="t" size="10"/>
+    <input type=button id="stop_go" onclick="stop()" value="Stop"/>
+    </form>
+  <div id="square"></div>
+  <div id="ball" class="ball"><img src="ball.gif" alt=""/></div>
+  </body>
+</html>
